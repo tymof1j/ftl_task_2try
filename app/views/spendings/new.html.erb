@@ -1,0 +1,29 @@
+<h2 class="text-2xl font-bold mb-4 mt-4">Spendings</h2>
+
+<%= form_for(@spending) do |f| %>
+  <div class="mb-4">
+    <div class="mb-4">
+      <%= f.label :amount, class: "block font-bold mb-2" %>
+      <%= f.number_field :amount, class: "border border-gray-400 p-2 w-full" %>
+    </div>
+
+    <div class="mb-4">
+      <%= f.label :name, class: "block font-bold mb-2" %>
+      <%= f.text_field :name, class: "border border-gray-400 p-2 w-full" %>
+    </div>
+
+    <%= f.label :description, class: "block font-bold mb-2" %>
+    <%= f.text_field :description, class: "border border-gray-400 p-2 w-full" %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.label :category, class: "block font-bold mb-2" %>
+    <%= f.select :category, options_for_select(Spending.categories.keys), {}, class: "border border-gray-400 p-2 w-full" %>
+  </div>
+
+  <%= f.hidden_field :user_id, value: current_user.id %>
+
+  <div class="mb-6">
+    <%= f.submit "Create Spending", class: "bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600" %>
+  </div>
+<% end %>

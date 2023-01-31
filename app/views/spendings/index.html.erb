@@ -1,0 +1,18 @@
+<div class="bg-white p-4 rounded shadow-lg">
+  <div class="mb-4">
+    <%= link_to "Add spending", new_spending_path, class: "bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600" %>
+  </div>
+  <% @spendings.each do |spending| %>
+    <div class="p-4 border border-gray-400 rounded mb-4">
+      <p class="font-bold mb-2">Description: <%= spending.description %></p>
+      <p class="font-bold mb-2">Amount: <%= spending.amount %></p>
+      <p class="font-bold mb-2">Category: <%= spending.category %></p>
+      <p class="font-bold mb-2">Name: <%= spending.name %></p>
+      <p class="font-bold mb-4">Created At: <%= spending.created_at %></p>
+      <div class="flex">
+        <%= link_to "Edit", edit_spending_path(spending), class: "bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 mr-2" %>
+        <%= link_to "Delete", spending_path(spending), data: { "turbo-method": :delete }, class: "bg-blue-700 text-white py-2 px-4 rounded hover:bg-blue-800" %>
+      </div>
+    </div>
+  <% end %>
+</div>
