@@ -1,24 +1,51 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Faster Than Light task
 
-Things you may want to cover:
+## Used technologies:
 
-* Ruby version
+### Backend part:
+- `esbuild`
+- ruby '3.2.0'
+- gems rails, pg, rspec-rails, shoulda-matchers, factory_bot_rails, faker, pry, devise
 
-* System dependencies
+### Frontend part:
+- CSS - [tailwindCss](https://tailwindcss.com)
 
-* Configuration
+## How to run project:
+1. Clone the repo:
+```shell
+git clone git@github.com:tymof1j/ftl_task_2try.git
+```
+2. Install gems:
+```shell
+bundle install
+```
+3. Create and migrate database:
+```shell
+rails db:create
+rails db:migrate
+```
+4. Because I used `esbuild` in this project in order to run it you have to use command:
+```shell
+./bin/dev
+```
 
-* Database creation
+### Structure of db:
+![](./pics/screenshot.png)
+- Amount, name, category are required fields for spendings table
+- Description is optional
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Pictures from website:
+![](./pics/1_creating_spending.png)
+- Creation of spending.
+![](./pics/2_all_entries.png)
+- Viewing all entries.
+![](./pics/3_filtered_entries.png)
+- Viewing filtered entries.
+![](./pics/4_sharing_page.png)
+- Viewing sharing page.
+![](./pics/5_show_shared_list.png)
+- Viewing show action of shared_list.
+![](./pics/6_new_shared_list.png)
+- Sharing you spending list with someone.
