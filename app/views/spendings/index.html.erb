@@ -1,18 +1,48 @@
-<div class="bg-white p-4 rounded shadow-lg">
-  <div class="mb-4">
-    <%= link_to "Add spending", new_spending_path, class: "bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600" %>
-  </div>
-  <% @spendings.each do |spending| %>
-    <div class="p-4 border border-gray-400 rounded mb-4">
-      <p class="font-bold mb-2">Description: <%= spending.description %></p>
-      <p class="font-bold mb-2">Amount: <%= spending.amount %></p>
-      <p class="font-bold mb-2">Category: <%= spending.category %></p>
-      <p class="font-bold mb-2">Name: <%= spending.name %></p>
-      <p class="font-bold mb-4">Created At: <%= spending.created_at %></p>
-      <div class="flex">
-        <%= link_to "Edit", edit_spending_path(spending), class: "bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 mr-2" %>
-        <%= link_to "Delete", spending_path(spending), data: { "turbo-method": :delete }, class: "bg-blue-700 text-white py-2 px-4 rounded hover:bg-blue-800" %>
+<div class="flex flex-col md:flex-row">
+  <div class="w-full md:w-2/3 p-3">
+    <div class="bg-white p-4 rounded shadow-lg">
+      <div class="mb-4">
+        <%= link_to "Add spending", new_spending_path, class: "bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600" %>
       </div>
+      <div class="mb-3">
+        <h3 class="text-gray-700 font-medium mb-1">Add Spending</h3>
+      </div>
+      <!-- Spending List Content -->
+      <% @spendings.each do |spending| %>
+        <div class="p-4 border border-gray-400 rounded mb-4">
+          <p class="font-bold mb-2">Description: <%= spending.description %></p>
+          <p class="font-bold mb-2">Amount: <%= spending.amount %></p>
+          <p class="font-bold mb-2">Category: <%= spending.category %></p>
+          <p class="font-bold mb-2">Name: <%= spending.name %></p>
+          <p class="font-bold mb-4">Created At: <%= spending.created_at %></p>
+          <div class="flex">
+            <%= link_to "Edit", edit_spending_path(spending), class: "bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 mr-2" %>
+            <%= link_to "Delete", spending_path(spending), data: { "turbo-method": :delete }, class: "bg-blue-700 text-white py-2 px-4 rounded hover:bg-blue-800" %>
+          </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
+  <div class="w-full md:w-1/3 p-3">
+    <!-- Filtering Form -->
+    <h3 class="text-gray-700 font-medium mb-1">Filter Spendings</h3>
+    <!-- Filtering Form Content -->
+    <%= form_tag spendings_path, method: :get, class: "py-2" do %>
+      <div class="flex flex-wrap -mx-3">
+        <div class="w-full px-3 mb-6">
+          <%= label_tag "Amount from" %>
+          <%= text_field_tag :amount_from, params[:amount_from], class: "border border-gray-400 p-2 w-full" %>
+        </div>
+        <div class="w-full px-3 mb-6">
+          <%= label_tag "Amount to" %>
+          <%= text_field_tag :amount_to, params[:amount_to], class: "border border-gray-400 p-2 w-full" %>
+        </div>
+        <div class="w-full px-3 mb-6">
+          <%= label_tag "Category" %>
+          <%= select_tag :category, options_for_select(@categories, params[:category]), include_blank: "All Categories", class: "border border-gray-400 p-2 w-full" %>
+        </div>
+      </div>
+      <%= submit_tag "Filter", class: "bg-indigo-500 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded" %>
+    <% end %>
+  </div>
 </div>

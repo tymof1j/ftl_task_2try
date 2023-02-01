@@ -6,6 +6,10 @@ class SpendingsController < ApplicationController
 
   def index
     @spendings = current_user.spendings
+    @spendings = @spendings.where('amount >= ?', params[:amount_from]) if params[:amount_from].present?
+    @spendings = @spendings.where('amount <= ?', params[:amount_to]) if params[:amount_to].present?
+    @spendings = @spendings.where(category: params[:category]) if params[:category].present?
+    @categories = Spending.pluck(:category).uniq
   end
 
   def show; end
