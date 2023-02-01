@@ -11,5 +11,7 @@ class Spending < ApplicationRecord
     Other: 'other'
   }
 
-  validates :name, :amount, :category, presence: true
+  validates :name, presence: true
+  validates :category, presence: true
+  validates :amount, presence: true, numericality: { only_integer: true }
 end
