@@ -1,0 +1,62 @@
+<div class="flex flex-wrap">
+  <div class="w-full max-w-sm mx-auto mt-10 md:w-1/2">
+    <h2 class="text-lg font-medium mb-4">Shared with Me</h2>
+    <% if @shared_lists.any? %>
+      <table class="table-auto w-full">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="px-4 py-2">Owner</th>
+            <th class="px-4 py-2">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @shared_lists.each do |shared_list| %>
+            <tr>
+              <td class="border px-4 py-2">
+                <%= shared_list.owner.email %>
+              </td>
+              <td class="border px-4 py-2 text-center">
+                <%= link_to "View", shared_list_path(shared_list), class: "bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <div class="text-center mt-6">
+        <p class="text-gray-500">No one has shared a spending list with you yet.</p>
+      </div>
+    <% end %>
+  </div>
+  <div class="w-full max-w-sm mx-auto mt-10 md:w-1/2">
+    <h2 class="text-lg font-medium mb-4">Shared by Me</h2>
+    <%= link_to "Share List", new_shared_list_path(owner_id: current_user), class: "bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600" %>
+    <% if @shared_lists_by_me.any? %>
+      <table class="table-auto w-full mt-4">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="px-4 py-2">Viewer</th>
+            <th class="px-4 py-2">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @shared_lists_by_me.each do |shared_list| %>
+            <tr>
+              <td class="border px-4 py-2">
+                <%= shared_list.viewer.email %>
+              </td>
+              <td class="border px-4 py-2 text-center">
+                <%= link_to "View", shared_list_path(shared_list), class: "bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <div class="text-center mt-6">
+        <p class="text-gray-500">You haven't shared your list of spendings with any one.</p>
+      </div>
+    <% end %>
+  </div>
+</div>
+

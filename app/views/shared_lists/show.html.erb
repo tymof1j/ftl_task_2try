@@ -1,0 +1,30 @@
+<h2 class="text-lg font-medium mb-4 mt-4">Spending list of <%= @shared_list.owner.email %>, shared with - <%= @shared_list.viewer.email %></h2>
+
+<table class="table-auto w-full text-left">
+  <thead>
+    <tr class="bg-gray-200">
+      <th class="px-4 py-2">Description</th>
+      <th class="px-4 py-2">Amount</th>
+      <th class="px-4 py-2">Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @spendings.each do |spending| %>
+      <tr class="hover:bg-gray-100">
+        <td class="border px-4 py-2">
+          <%= spending.description %>
+        </td>
+        <td class="border px-4 py-2">
+          <%= spending.amount %>
+        </td>
+        <td class="border px-4 py-2">
+          <%= spending.category %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="mr-4 mt-4">
+  <%= link_to "View Share List", shared_lists_path, class: "bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600" %>
+</div>
