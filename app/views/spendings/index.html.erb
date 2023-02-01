@@ -8,6 +8,9 @@
         <div class="mr-4">
           <p class="font-medium">Your total at this time is: <%= @spendings.sum(:amount) %></p>
         </div>
+        <div class="mr-4">
+          <%= link_to "View Share List", shared_lists_path, class: "bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600" %>
+        </div>
       </div>
       <div class="mb-3">
         <h3 class="text-gray-700 font-medium mb-1">Add Spending</h3>
