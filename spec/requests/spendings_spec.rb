@@ -3,8 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Spendings', type: :request do
-  include Devise::Test::IntegrationHelpers
-
   let(:user) { create(:user) }
   let(:spending) { create(:spending, user_id: user.id) }
 

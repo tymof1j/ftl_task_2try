@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'SharedLists', type: :request do
-  include Devise::Test::IntegrationHelpers
-
   describe 'GET #index' do
     let(:user) { create(:user) }
     let(:owner) { create(:user) }
