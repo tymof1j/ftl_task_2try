@@ -31,6 +31,9 @@ rails db:migrate
 ./bin/dev
 ```
 
+### Test coverage:
+![](./pics/10_test_coverage.png)
+
 ### Structure of db:
 ![](./pics/screenshot.png)
 - Amount, name, category are required fields for spendings table
