@@ -34,3 +34,6 @@
 !/app/assets/builds/.keep
 
 /node_modules
+
+# Ignore all simplecov output
+/coverage/*

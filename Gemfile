@@ -75,6 +75,7 @@ gem 'devise', '~> 4.8'
 
 group :test do
   gem 'shoulda-matchers'
+  gem 'simplecov', require: false
 end
 
 gem 'faker', '~> 3.1'
