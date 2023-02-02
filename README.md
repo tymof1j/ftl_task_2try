@@ -40,15 +40,15 @@ rails db:migrate
 - Description is optional
 
 ### Pictures from website:
+  - Creation of spending.
 ![](./pics/1_creating_spending.png)
-- Creation of spending.
+  - Viewing all entries.
 ![](./pics/2_all_entries.png)
-- Viewing all entries.
+  - Viewing filtered entries.
 ![](./pics/3_filtered_entries.png)
-- Viewing filtered entries.
+  - Viewing sharing page.
 ![](./pics/4_sharing_page.png)
-- Viewing sharing page.
+  - Viewing show action of shared_list.
 ![](./pics/5_show_shared_list.png)
-- Viewing show action of shared_list.
+  - Sharing you spending list with someone.
 ![](./pics/6_new_shared_list.png)
-- Sharing you spending list with someone.
